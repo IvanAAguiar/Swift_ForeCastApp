@@ -11,7 +11,6 @@ import SwiftUI
 public struct CityWeatherViewModel {
     let forecast: Day
     
-    	
     private static var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MM, d"
@@ -32,4 +31,13 @@ public struct CityWeatherViewModel {
         return "Min: \(Self.numberFormatter.string(for: forecast.main.tempMin) ?? "0")°C"
     }
     
+    var dtTxt: [String] {
+        let arr = forecast.dtTxt
+        return arr.description.components(separatedBy: " ")
+    }
+    
+    var hour: String {
+        let hour = dtTxt[1].components(separatedBy: ":")
+        return String("\(hour[0]):\(hour[1])")
+    }
 }

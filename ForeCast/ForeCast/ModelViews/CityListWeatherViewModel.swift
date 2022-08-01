@@ -7,10 +7,12 @@
 
 import CoreLocation
 import Foundation
+import SwiftUI
 
 class CityListWeatherViewModel: ObservableObject {
     
-    @Published var forecasts:[CityWeatherViewModel] = []
+    @Published var forecasts:[[CityWeatherViewModel]] = []
+    var days:[CityWeatherViewModel] = []
     var location: String = ""
     
     func getCityWeatherForecast () {
@@ -30,7 +32,8 @@ class CityListWeatherViewModel: ObservableObject {
                     switch result {
                     case .success(let success):
                         DispatchQueue.main.async {
-                            self.forecasts = success.list.map {CityWeatherViewModel(forecast: $0)}
+                            self.days = success.list.map {CityWeatherViewModel(forecast: $0)}
+                            self.filterDay()
                             print(success)
                         }
                     case .failure(let apiError):
@@ -41,6 +44,29 @@ class CityListWeatherViewModel: ObservableObject {
                     }
                 }
             }
+        }
+    }
+    
+    func filterDay() {
+        var filteredDays: [CityWeatherViewModel] = []
+        var count = 0
+        
+        for day in days {
+            if filteredDays.isEmpty {
+                filteredDays.append(day)
+                count = count + 1
+            } else {
+                if filteredDays[0].dtTxt[0] == day.dtTxt[0] {
+                    filteredDays.append(day)
+                    count = count + 1
+                } else {
+                    forecasts.append(filteredDays)
+                    filteredDays.removeAll()
+                    filteredDays.append(day)
+                    count = 0
+                }
+            }
+        
         }
     }
 }
