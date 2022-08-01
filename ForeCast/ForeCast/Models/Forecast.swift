@@ -7,56 +7,57 @@
 
 import Foundation
 
-// MARK: - Forecast
-struct Forecast: Codable {
-    let cod: String
-    let message, cnt: Int
-    let list: [Day]
-    let city: City
+// MARK: - Welcome
+public struct Welcome: Codable {
+    var cod: String
+    var message, cnt: Int
+    var list: [Day]
+    var city: City
 }
 
 // MARK: - City
 struct City: Codable {
-    let id: Int
-    let name: String
-    let coord: Coord
-    let country: String
-    let population, timezone, sunrise, sunset: Int
+    var id: Int
+    var name: String
+    var coord: Coord
+    var country: String
+    var population, timezone, sunrise, sunset: Int
 }
 
 // MARK: - Coord
 struct Coord: Codable {
-    let lat, lon: Double
+    var lat, lon: Double
 }
 
 // MARK: - List
-struct Day: Codable {
-    let dt: Date
-    let main: MainClass
-    let weather: [Weather]
-    let clouds: Clouds
-    let wind: Wind
-    let visibility, pop: Int
-    let sys: Sys
-    let dtTxt: String
-    
+struct Day: Codable, Identifiable {
+    var id: Int
+    var main: Main
+    var weather: [Weather]
+    var clouds: Clouds
+    var wind: Wind
+    var visibility, pop: Int
+    var sys: Sys
+    var dtTxt: String
+
     enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, visibility, pop, sys
+        case main, weather, clouds, wind, visibility, pop, sys
         case dtTxt = "dt_txt"
+        case id = "dt"
     }
 }
 
 // MARK: - Clouds
 struct Clouds: Codable {
-    let all: Int
+    var all: Int
 }
 
-// MARK: - MainClass
-struct MainClass: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, seaLevel, grndLevel, humidity: Int
-    let tempKf: Double
-    
+// MARK: - Main
+struct Main: Codable {
+    var temp, feelsLike, tempMin, tempMax: Double
+    var pressure, seaLevel, grndLevel, humidity: Int
+    var tempKf: Double
+
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"
@@ -72,49 +73,19 @@ struct MainClass: Codable {
 
 // MARK: - Sys
 struct Sys: Codable {
-    let pod: Pod
-}
-
-enum Pod: String, Codable {
-    case d = "d"
-    case n = "n"
+    let pod: String
 }
 
 // MARK: - Weather
-struct Weather: Codable {
+struct Weather: Codable, Identifiable {
     let id: Int
-    let main: MainEnum
-    let weatherDescription: String
-    let icon: Icon
-    var weatherIconURL: URL {
-        let urlString = "http://openweathermap.org/img/wn/\(icon)@2x.png"
-        return URL(string: urlString)!
-    }
-    
+    let main, weatherDescription, icon: String
+
     enum CodingKeys: String, CodingKey {
         case id, main
         case weatherDescription = "description"
         case icon
     }
-}
-
-enum Icon: String, Codable {
-    case the01D = "01d"
-    case the01N = "01n"
-    case the02D = "02d"
-    case the02N = "02n"
-    case the03D = "03d"
-}
-
-enum MainEnum: String, Codable {
-    case clear = "Clear"
-    case clouds = "Clouds"
-}
-
-enum Description: String, Codable {
-    case clearSky = "clear sky"
-    case fewClouds = "few clouds"
-    case scatteredClouds = "scattered clouds"
 }
 
 // MARK: - Wind
@@ -124,3 +95,5 @@ struct Wind: Codable {
     let gust: Double
 }
 
+
+    
