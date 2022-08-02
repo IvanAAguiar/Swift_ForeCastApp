@@ -17,6 +17,7 @@ struct CitiesView: View {
                 ForEach(vm.savedEntities) {
                     entity in
                     Text(entity.name ?? "NO NAME")
+                    //TODO: It is soppose to onTapGesture changes the view and fetches the data again
                         .onLongPressGesture() {
                             vm.updateCity(entity: entity)
                         }

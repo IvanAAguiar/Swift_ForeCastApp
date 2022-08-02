@@ -30,16 +30,22 @@ struct CityView: View {
                 Spacer()
                 VStack (alignment: .leading) {
                     SwiftUI.Group {
+                        //TODO: Sometimes the list load over the old list
+                        // The list must be clean always when is done a search
                         ForEach(listVM.forecasts, id: \.debugDescription) { index in
                             SectionView(days: index)
                         }
                     }
                 }
                 .padding(.horizontal)
+                .alert(item: $listVM.appError) { alert in
+                    Alert(title: Text("Error"), message: Text("\(alert.errorString)"))
+                }
             }
             .frame(width: 300, alignment: .center)
             .padding()
         }
+        // It shows when the process to access data is running
         if listVM.isLoading  {
             Color(.white)
                 .opacity(0.3)
