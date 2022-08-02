@@ -1,49 +1,50 @@
 //
-//  TableView.swift
-//  ForeCast
+//  HomeView.swift
+//  weatherForecast
 //
-//  Created by user225360 on 8/1/22.
+//  Created by user225360 on 7/28/22.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject private var listVM: CityListWeatherViewModel = CityListWeatherViewModel()
+    @State private var showCities: Bool = false
     
     var body: some View {
-        ScrollView {
-            HStack (alignment: .center) {
-                TextField("Enter city here...", text: $listVM.location)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                Button {
-                    listVM.getCityWeatherForecast()
-                } label: {
-                    Image(systemName: "magnifyingglass.circle.fill")
-                        .font(.title3)
-                }
-            }
-            .frame(width: 365, alignment: .center)
-            Spacer()
-            VStack (alignment: .leading) {
-                SwiftUI.Group {
-                    ForEach(listVM.forecasts, id: \.debugDescription) { index in
-                        SectionView(days: index)
-                    }
-                }
-            }
-            .padding(.horizontal)
+        homeHeader
+        if showCities == true {
+            CitiesView()
         }
-        .frame(width: 300, alignment: .center)
-        .padding()
+        else {
+            CityView()
+        }
     }
 }
 
-    
-struct TableView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        NavigationView {
+            HomeView()
+                .navigationBarHidden(true)
+        }
     }
 }
 
+extension HomeView {
+    private var homeHeader: some View {
+        HStack {
+            Text(showCities ? "Cities" : "Weather Forecast")
+                .font(.headline)
+                .fontWeight(.heavy)
+                .foregroundColor(.black)
+                .animation(.none)
+            Spacer()
+            AddButtonView(iconName: showCities ? "chevron.left" : "chevron.right")
+                .onTapGesture {
+                    showCities.toggle()
+                }
+        }
+        .padding(.horizontal)
+    }
+}

@@ -11,7 +11,7 @@ import SwiftUI
 
 class CityListWeatherViewModel: ObservableObject {
     
-    
+    @State private var cityList: CitiesViewModel = CitiesViewModel()
     @Published var forecasts:[[CityWeatherViewModel]] = []
     var days:[CityWeatherViewModel] = []
     var location: String = ""
@@ -36,6 +36,7 @@ class CityListWeatherViewModel: ObservableObject {
                     case .success(let success):
                         self.days = success.list.map {CityWeatherViewModel(id: $0.id, forecast: $0)}
                         self.filterDay()
+                        self.cityList.addCity(text: self.location)
                         print(success)
                     case .failure(let apiError):
                         switch apiError {
