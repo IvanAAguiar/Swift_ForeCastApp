@@ -1,8 +1,8 @@
 //
 //  HomeView.swift
-//  weatherForecast
+//  ForeCast
 //
-//  Created by user225360 on 7/28/22.
+//  Created by Ivan Aguiar on 7/28/22.
 //
 
 import SwiftUI

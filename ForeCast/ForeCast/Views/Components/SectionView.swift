@@ -2,11 +2,12 @@
 //  SectionView.swift
 //  ForeCast
 //
-//  Created by user225360 on 8/1/22.
+//  Created by Ivan Aguiar on 8/1/22.
 //
 
 import SwiftUI
 
+//TODO: The elements are fetching over the limit of the screen and must be fixed
 struct SectionView: View {
     let days: [CityWeatherViewModel]
     

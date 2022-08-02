@@ -2,7 +2,7 @@
 //  DayInfoUIView.swift
 //  ForeCast
 //
-//  Created by user225360 on 8/2/22.
+//  Created by Ivan Aguiar0 on 8/2/22.
 //
 
 import SwiftUI

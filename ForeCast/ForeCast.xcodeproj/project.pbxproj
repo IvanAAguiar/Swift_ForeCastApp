@@ -16,6 +16,7 @@
 		019083D72898C981005914E9 /* weatherForecast.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 019083D52898C981005914E9 /* weatherForecast.xcdatamodeld */; };
 		019083D92898CE8F005914E9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019083D82898CE8F005914E9 /* HomeView.swift */; };
 		019083DB2898CEA2005914E9 /* AddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019083DA2898CEA2005914E9 /* AddButtonView.swift */; };
+		019083DE2898E44C005914E9 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019083DD2898E44C005914E9 /* DataExtension.swift */; };
 		01BC43A628940A30008F54CB /* ForeCastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC43A528940A30008F54CB /* ForeCastApp.swift */; };
 		01BC43AA28940A32008F54CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BC43A928940A32008F54CB /* Assets.xcassets */; };
 		01BC43AD28940A32008F54CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BC43AC28940A32008F54CB /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		019083D62898C981005914E9 /* weatherForecast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = weatherForecast.xcdatamodel; sourceTree = "<group>"; };
 		019083D82898CE8F005914E9 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		019083DA2898CEA2005914E9 /* AddButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonView.swift; sourceTree = "<group>"; };
+		019083DD2898E44C005914E9 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		01B6483328956BEE00DD045D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		01BC43A228940A30008F54CB /* ForeCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BC43A528940A30008F54CB /* ForeCastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCastApp.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		019083DC2898E424005914E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				019083DD2898E44C005914E9 /* DataExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01BC439928940A30008F54CB = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 			children = (
 				01B6483328956BEE00DD045D /* Info.plist */,
 				01BC43A528940A30008F54CB /* ForeCastApp.swift */,
+				019083DC2898E424005914E9 /* Extensions */,
 				01BC43B428940A77008F54CB /* Services */,
 				01BC43B528940A95008F54CB /* Models */,
 				01BC43BD28944D37008F54CB /* ViewModels */,
@@ -219,6 +230,7 @@
 				01BC43BF28944D52008F54CB /* CityWeatherViewModel.swift in Sources */,
 				01320C3428981A7D0063045F /* CityView.swift in Sources */,
 				019083D92898CE8F005914E9 /* HomeView.swift in Sources */,
+				019083DE2898E44C005914E9 /* DataExtension.swift in Sources */,
 				01320C3628983FD80063045F /* SectionView.swift in Sources */,
 				019083D72898C981005914E9 /* weatherForecast.xcdatamodeld in Sources */,
 				01BC43B728940ED0008F54CB /* ForecastDataService.swift in Sources */,

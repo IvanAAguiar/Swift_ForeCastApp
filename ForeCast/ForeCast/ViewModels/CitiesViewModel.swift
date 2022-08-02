@@ -1,8 +1,8 @@
 //
 //  ListViewModel.swift
-//  weatherForecast
+//  ForeCast
 //
-//  Created by user225360 on 7/27/22.
+//  Created by Ivan Aguiar on 7/27/22.
 //
 
 import Foundation
@@ -34,6 +34,7 @@ class CitiesViewModel: ObservableObject {
         }
     }
     
+    //TODO: To clean the list for repeated items
     func addCity(text: String) {
         let newCity = CityEntity(context: container.viewContext)
         newCity.name = text

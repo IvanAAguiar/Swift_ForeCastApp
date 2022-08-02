@@ -2,7 +2,7 @@
 //  ForecastDataService.swift
 //  ForeCast
 //
-//  Created by user225360 on 7/29/22.
+//  Created by Ivan Aguiar on 7/29/22.
 //
 
 import Foundation
@@ -50,44 +50,9 @@ public class ForecastDataService {
                 completion(.success(decodedData))
             }
             .store(in: &cancellables)
-
-            
-            
-            
-            
-            
-            
-            
-            
-//
-//            //It shows if had error with the process to request the JSON object
-//            if let error = error {
-//                completion(.failure(.error("Error: \(error.localizedDescription)")))
-//                return print(error)
-//            }
-//
-//            guard let data = data else {
-//                //It shows if had error with the data
-//                completion(.failure(.error(NSLocalizedString("Error: Data is corrupt.", comment: ""))))
-//                return
-//            }
-//
-//            let decoder = JSONDecoder()
-////            decoder.dateDecodingStrategy = .deferredToDate
-////            decoder.keyDecodingStrategy = .useDefaultKeys
-//
-//            do {
-//                let decodedData = try decoder.decode(T.self, from: data)
-//                completion(.success(decodedData))
-//                return print(decodedData)
-//            } catch let error {
-//                //It shows if had error if the decoded data
-//                completion(.failure(APIError.error("Error: \(error.localizedDescription)")))
-//                return
-//            }
-//        }.resume()
     }
 }
+
 
 
 
