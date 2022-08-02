@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 public struct CityWeatherViewModel {
+    let id: Int
     let forecast: Day
-    
+
     private static var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MM, d"

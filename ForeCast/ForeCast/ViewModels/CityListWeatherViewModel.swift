@@ -11,6 +11,7 @@ import SwiftUI
 
 class CityListWeatherViewModel: ObservableObject {
     
+    
     @Published var forecasts:[[CityWeatherViewModel]] = []
     var days:[CityWeatherViewModel] = []
     var location: String = ""
@@ -20,6 +21,7 @@ class CityListWeatherViewModel: ObservableObject {
         
         //Responsable for define the coordinates
         CLGeocoder().geocodeAddressString(location) { (placemarks, error) in
+            //It catchs errors at CLGeocoder
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -29,13 +31,12 @@ class CityListWeatherViewModel: ObservableObject {
                 service.getData(url: "http://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=ab4fd70a66986dafa0c943e8a13ad08f&units=metric") {
                     (result: Result<Welcome, ForecastDataService.APIError>)
                     in
+                    //It gets the result and shows in each case
                     switch result {
                     case .success(let success):
-                        DispatchQueue.main.async {
-                            self.days = success.list.map {CityWeatherViewModel(forecast: $0)}
-                            self.filterDay()
-                            print(success)
-                        }
+                        self.days = success.list.map {CityWeatherViewModel(id: $0.id, forecast: $0)}
+                        self.filterDay()
+                        print(success)
                     case .failure(let apiError):
                         switch apiError {
                         case .error(let errorString):
@@ -46,27 +47,25 @@ class CityListWeatherViewModel: ObservableObject {
             }
         }
     }
-    
+}
+
+//TODO: It must be a extension to formart the data
+extension CityListWeatherViewModel {
     func filterDay() {
         var filteredDays: [CityWeatherViewModel] = []
-        var count = 0
-        
+
         for day in days {
             if filteredDays.isEmpty {
                 filteredDays.append(day)
-                count = count + 1
             } else {
                 if filteredDays[0].dtTxt[0] == day.dtTxt[0] {
                     filteredDays.append(day)
-                    count = count + 1
                 } else {
                     forecasts.append(filteredDays)
                     filteredDays.removeAll()
                     filteredDays.append(day)
-                    count = 0
                 }
             }
-        
         }
     }
 }

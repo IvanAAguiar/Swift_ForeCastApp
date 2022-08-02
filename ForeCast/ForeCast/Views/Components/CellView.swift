@@ -25,7 +25,7 @@ struct CellView: View {
         .frame(width:50, height: 80, alignment: .center)
         .background(.gray.opacity(0.2))
         .cornerRadius(10)
-        .shadow(color: .black.opacity(0.15), radius: 10, x: 0.0, y: 0.0)
+        .shadow(color: .black.opacity(0.1), radius: 10, x: 0.0, y: 0.0)
         .padding(1)
         .previewLayout(.sizeThatFits)
     }
