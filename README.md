@@ -36,11 +36,5 @@ Was implemented the search bar, CoreData, and a history screen as it was possibl
 loading alert and error alert to be able to identify what is happening in the system.
 
 It was funny to learn about mobile, swift, and swiftUI. It was hard enough to begin because the machine is
-not apple, I never used mac or xCode. It was the first contact and just to start the virtual machine it 
-took time. 
+not apple, I never used mac or xCode, it was the first contact. 
 
-The API Open Weather Map and Geocoder working together were not responding as expected. Sometimes it gives
-an error. Was tried to search many cities, but got a more certain response, Porto. I really do not give
-attention to this because was no time to lose.
-
-Thank you for the opportunity!
